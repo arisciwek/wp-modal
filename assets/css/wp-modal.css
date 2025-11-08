@@ -1,0 +1,430 @@
+/**
+ * WP Modal - Modal Styles
+ *
+ * @package     WPModal
+ * @subpackage  Assets/CSS
+ * @version     0.1.0
+ * @author      arisciwek
+ *
+ * Path: /wp-modal/assets/css/wp-modal.css
+ *
+ * Description: Styling for centralized modal template system.
+ *              Responsive design with WordPress admin integration.
+ *              Supports multiple sizes and modal types.
+ *
+ * Changelog:
+ * 1.0.0 - 2025-11-01 (TODO-1194)
+ * - Initial styles
+ * - Responsive design
+ * - Size variations
+ * - Modal types styling
+ * - Accessibility features
+ */
+
+/* ============================================
+   Modal Container & Overlay
+   ============================================ */
+
+.wpmodal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    display: none;
+}
+
+.wpmodal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.wpmodal-container {
+    position: relative;
+    background: #fff;
+    margin: 50px auto;
+    max-width: 600px;
+    width: 90%;
+    max-height: calc(100vh - 100px);
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Size Variations */
+.wpmodal-container.wpmodal-small {
+    max-width: 400px;
+}
+
+.wpmodal-container.wpmodal-medium {
+    max-width: 600px;
+}
+
+.wpmodal-container.wpmodal-large {
+    max-width: 800px;
+}
+
+/* ============================================
+   Modal Header
+   ============================================ */
+
+.wpmodal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fcfcfc;
+    border-radius: 3px 3px 0 0;
+    flex-shrink: 0;
+}
+
+.wpmodal-title {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #23282d;
+}
+
+.wpmodal-close {
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.wpmodal-close:hover {
+    background: #f0f0f0;
+    color: #000;
+}
+
+.wpmodal-close:focus {
+    outline: 1px dotted #0073aa;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   Modal Body
+   ============================================ */
+
+.wpmodal-body {
+    padding: 20px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 200px;
+    max-height: 70vh;
+}
+
+.wpmodal-content {
+    /* Content area - styles from plugins */
+}
+
+/* Loading State */
+.wpmodal-loading {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.wpmodal-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #0073aa;
+    border-radius: 50%;
+    animation: wpmodal-spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes wpmodal-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.wpmodal-loading p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* ============================================
+   Modal Footer
+   ============================================ */
+
+.wpmodal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+    background: #fcfcfc;
+    text-align: right;
+    border-radius: 0 0 3px 3px;
+    flex-shrink: 0;
+}
+
+.wpmodal-footer .wpmodal-btn {
+    margin-left: 8px;
+}
+
+.wpmodal-footer .wpmodal-btn:first-child {
+    margin-left: 0;
+}
+
+/* Button danger variant */
+.wpmodal-footer .button-danger {
+    background: #dc3232;
+    border-color: #dc3232;
+    color: #fff;
+}
+
+.wpmodal-footer .button-danger:hover {
+    background: #c62d2d;
+    border-color: #c62d2d;
+}
+
+/* ============================================
+   Info Modal Styling
+   ============================================ */
+
+.wpmodal-info {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px 0;
+}
+
+.wpmodal-info .dashicons {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.wpmodal-info-message {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Info type colors */
+.wpmodal-info-success .dashicons {
+    color: #46b450;
+}
+
+.wpmodal-info-error .dashicons {
+    color: #dc3232;
+}
+
+.wpmodal-info-warning .dashicons {
+    color: #ffb900;
+}
+
+.wpmodal-info-info .dashicons {
+    color: #0073aa;
+}
+
+/* ============================================
+   Form Styling
+   ============================================ */
+
+.wpmodal-form {
+    /* Form container */
+}
+
+.wpmodal-form-field {
+    margin-bottom: 15px;
+}
+
+.wpmodal-form-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.wpmodal-form-field input[type="text"],
+.wpmodal-form-field input[type="email"],
+.wpmodal-form-field input[type="number"],
+.wpmodal-form-field input[type="tel"],
+.wpmodal-form-field input[type="url"],
+.wpmodal-form-field textarea,
+.wpmodal-form-field select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
+}
+
+.wpmodal-form-field input:focus,
+.wpmodal-form-field textarea:focus,
+.wpmodal-form-field select:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 0 1px #0073aa;
+}
+
+.wpmodal-form-field textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.wpmodal-form-field .description {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #666;
+    font-style: italic;
+}
+
+.wpmodal-form-field.error input,
+.wpmodal-form-field.error textarea,
+.wpmodal-form-field.error select {
+    border-color: #dc3232;
+}
+
+.wpmodal-form-field .error-message {
+    display: block;
+    margin-top: 5px;
+    color: #dc3232;
+    font-size: 13px;
+}
+
+/* Required field indicator */
+.wpmodal-form-field label .required {
+    color: #dc3232;
+    margin-left: 3px;
+}
+
+/* ============================================
+   Confirmation Modal
+   ============================================ */
+
+.wpmodal[data-modal-type="confirmation"] .wpmodal-body {
+    padding: 30px 20px;
+}
+
+.wpmodal[data-modal-type="confirmation"] .wpmodal-content {
+    text-align: center;
+}
+
+.wpmodal[data-modal-type="confirmation"] .wpmodal-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media screen and (max-width: 782px) {
+    .wpmodal-container {
+        margin: 20px auto;
+        width: 95%;
+        max-height: calc(100vh - 40px);
+    }
+
+    .wpmodal-container.wpmodal-small,
+    .wpmodal-container.wpmodal-medium,
+    .wpmodal-container.wpmodal-large {
+        max-width: 95%;
+    }
+
+    .wpmodal-header {
+        padding: 12px 15px;
+    }
+
+    .wpmodal-title {
+        font-size: 16px;
+    }
+
+    .wpmodal-body {
+        padding: 15px;
+    }
+
+    .wpmodal-footer {
+        padding: 12px 15px;
+    }
+
+    .wpmodal-footer .wpmodal-btn {
+        margin-left: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .wpmodal-footer {
+        text-align: center;
+    }
+
+    .wpmodal-footer .wpmodal-btn {
+        display: block;
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .wpmodal-footer .wpmodal-btn:first-child {
+        margin-left: 0;
+    }
+}
+
+/* ============================================
+   Accessibility
+   ============================================ */
+
+/* Focus visible for keyboard navigation */
+.wpmodal-btn:focus-visible {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+/* Screen reader only text */
+.wpmodal-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .wpmodal-overlay {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .wpmodal-container {
+        border: 2px solid #000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .wpmodal-spinner {
+        animation: none;
+        border-top-color: transparent;
+    }
+}

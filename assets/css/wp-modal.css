@@ -46,9 +46,11 @@
 }
 
 .wpmodal-container {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: #fff;
-    margin: 50px auto;
     max-width: 600px;
     width: 90%;
     max-height: calc(100vh - 100px);
@@ -131,7 +133,6 @@
     padding: 20px;
     overflow-y: auto;
     flex: 1;
-    min-height: 200px;
     max-height: 70vh;
 }
 
@@ -320,6 +321,7 @@
 
 .wpmodal[data-modal-type="confirmation"] .wpmodal-body {
     padding: 30px 20px;
+    min-height: auto;
 }
 
 .wpmodal[data-modal-type="confirmation"] .wpmodal-content {
@@ -329,7 +331,12 @@
 .wpmodal[data-modal-type="confirmation"] .wpmodal-content p {
     font-size: 15px;
     line-height: 1.6;
-    margin: 0;
+    margin: 0 0 10px 0;
+    white-space: pre-line;
+}
+
+.wpmodal[data-modal-type="confirmation"] .wpmodal-content p:last-child {
+    margin-bottom: 0;
 }
 
 /* ============================================

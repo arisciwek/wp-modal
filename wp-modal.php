@@ -98,7 +98,9 @@ function wpmodal_init() {
      */
     do_action('wpmodal_initialized', $asset_controller);
 }
-add_action('plugins_loaded', 'wpmodal_init');
+// Priority 5 ensures wp-modal loads BEFORE wp-datatable (priority 10)
+// This way admin_enqueue_scripts hooks are registered in correct order
+add_action('plugins_loaded', 'wpmodal_init', 5);
 
 /**
  * Activation hook

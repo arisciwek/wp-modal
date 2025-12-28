@@ -271,9 +271,19 @@
                 url: url,
                 method: 'GET',
                 success: function(response) {
-                    console.log('[WP Modal] Response received, length:', response.length);
-                    console.log('[WP Modal] Response preview:', response.substring(0, 200));
-                    self.setContent(response);
+                    // Handle both JSON and plain HTML responses
+                    var content = response;
+
+                    // If response is object (JSON), extract html from data.html
+                    if (typeof response === 'object' && response.success && response.data && response.data.html) {
+                        content = response.data.html;
+                        console.log('[WP Modal] JSON response received, extracted HTML length:', content.length);
+                    } else if (typeof response === 'string') {
+                        console.log('[WP Modal] HTML response received, length:', content.length);
+                        console.log('[WP Modal] Response preview:', content.substring(0, 200));
+                    }
+
+                    self.setContent(content);
                 },
                 error: function(xhr, status, error) {
                     console.error('[WP Modal] AJAX load failed:', error);
@@ -535,7 +545,7 @@
     $(document).ready(function() {
         // Check if modal template exists
         if ($('#wpmodal').length) {
-            wpAppModal.init();
+            WPModal.init();
         } else {
             console.warn('[WP Modal] Modal template not found in DOM');
         }
